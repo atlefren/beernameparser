@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='js/lib/bootstrap/dist/css/bootstrap.css') }}"/>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Vinmonopolet</h2>
+          <ul class="list-group">
+            {% for brewery in vp_breweries %}
+              <li class="list-group-item">
+                {{brewery.name}} ({{brewery.id}})
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-group">
+            <h2>Unmapped</h2>
+            {% for brewery in notmapped %}
+              <li class="list-group-item">
+                {{brewery.name}} {{brewery.id}}
+                ({{brewery.vp_brewery.id}}, {{brewery.rb_brewery.id}})
+              </li>
+            {% endfor %}
+            <h2>Mapped</h2>
+            {% for brewery in breweries %}
+              <li class="list-group-item">
+                {{brewery.name}} {{brewery.id}}
+                
+                ({{brewery.vp_brewery.id}}, {{brewery.rb_brewery.id}})
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+                <div class="col-md-4">
+          <h2>Ratebeer</h2>
+          <ul class="list-group">
+            {% for brewery in rb_breweries %}
+              <li class="list-group-item">{{brewery.name}} ({{brewery.id}})</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

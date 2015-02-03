@@ -1,1 +1,5 @@
 venv/
+*.pyc
+*.zip
+*.json
+*.db
